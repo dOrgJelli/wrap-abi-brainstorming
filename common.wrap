@@ -1,0 +1,3 @@
+object CommonObject {
+  prop: String
+}

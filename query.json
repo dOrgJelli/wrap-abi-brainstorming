@@ -1,0 +1,52 @@
+{
+  "abi": [
+    {
+      "type": "object",
+      "version": 0,
+      "name": "CommonObject",
+      "properties": [
+        {
+          "type": "property",
+          "version": 0,
+          "name": "prop",
+          "typeof": {
+            "type": "Scalar",
+            "name": "String"
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "type": "dependency",
+      "version": 0,
+      "name": "Ethereum",
+      "uri": "pw://ens/ethereum.polywrap.eth",
+      "imports": [
+        {
+          "type": "module",
+          "version": 0,
+          "name": "Query",
+          "methods": [
+            {
+              "...": "..."
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "version": 0,
+          "name": "Receipt",
+          "properties": [
+            {
+              "...": "..."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      TODO
+    }
+  ]
+}

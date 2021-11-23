@@ -1,0 +1,57 @@
+# TODO: very WIP
+
+#import { CommonType } from "./common.graphql"
+#import { Query, Receipt } into Ethereum from "ens/ethereum.web3api.eth"
+#import { Query } into Interface from "ens/interface.eth"
+
+type Query {
+  method(
+    string: String!
+  )
+}
+
+@dynamic
+@registry
+interface Interface {
+  Query
+} from "ens/interface.eth"
+
+@optional
+plugin HTTP {
+  module Query {
+    get(
+      request: Request
+    ): Response
+  }
+
+  type Request {
+    foo: String
+  }
+
+  type Response {
+    bar: String
+  }
+}
+
+plugin Storage {
+  Query
+} from interface "ens/storage.plugins.eth"
+
+@implements(Interface.Query)
+module Query {
+  method(
+    foo: Foo?
+    enum: Enum
+  ): Ethereum.Receipt
+}
+
+type Foo {
+  bar: UInt8
+  baz: String
+}
+
+enum Enum {
+  FIRST,
+  SECOND,
+  THIRD
+}

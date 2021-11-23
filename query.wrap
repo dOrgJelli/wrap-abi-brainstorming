@@ -1,0 +1,65 @@
+// TODO: Arrays, Maps
+
+// 1: pre-processor directive, used to embed types
+#include { CommonObject } from "./common.wrap"
+
+/* 2: depend upon external wrappers */
+dependency Ethereum {
+  Query,
+  Receipt
+} from "ens/ethereum.web3api.eth"
+
+// 3: define module methods + implement an interface
+@implements(Interface.Query)
+module Query {
+  method(
+    foo: Foo?
+    enum: Enum
+  ): Ethereum.Receipt
+}
+
+// 4: define custom types
+object Foo {
+  bar: UInt8
+  baz: String
+}
+
+enum Enum {
+  FIRST,
+  SECOND,
+  THIRD
+}
+
+/* 5: depend upon an interface,
+      and allow the module to query any
+      registered implementations + any
+      URI they define dynamically at run-time */
+@implementations(registered, dynamic)
+interface Interface {
+  Query
+} from "ens/interface.eth"
+
+/* 6: depend upon a host plugin, defined by
+         the interface schema at "ens/storage.plugins.eth" */
+plugin Storage {
+  Query
+} from interface "ens/storage.plugins.eth"
+
+/* 7: optionally depend upon a host plugin, defined by
+         the inlined schema below */
+@optional
+plugin HTTP {
+  module Query {
+    get(
+      request: Request
+    ): Response
+  }
+
+  object Request {
+    foo: String
+  }
+
+  object Response {
+    bar: String
+  }
+}
