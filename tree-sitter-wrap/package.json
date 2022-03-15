@@ -7,10 +7,23 @@
   "main": "bindings/node",
   "scripts": {
     "build": "tree-sitter generate",
-    "test": "tree-sitter test"
+    "test": "tree-sitter test",
+    "highlight": "tree-sitter highlight ./examples/*",
+    "examples:parse": "tree-sitter parse ./examples/*.wrap"
   },
   "dependencies": {
     "nan": "2.15.0",
     "tree-sitter-cli": "0.20.6"
-  }
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.wrap",
+      "file-types": [
+        "wrap"
+      ],
+      "highlights": [
+        "queries/highlights.scm"
+      ]
+    }
+  ]
 }

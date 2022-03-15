@@ -1,69 +1,5 @@
 ==========================
-Enum Definition
-==========================
-
-enum Color {
-  RED
-  GREEN
-  BLUE
-}
-
-enum Test_foo {
-  RED,
-  GREEN,
-}
-
----
-
-(File (Document
-  (Definition
-    (TypeDefinition
-      (EnumTypeDefinition
-        (TypeName) (EnumValuesDefinition
-          (EnumValueDefinition (EnumValue (Name)))
-          (EnumValueDefinition (EnumValue (Name)))
-          (EnumValueDefinition (EnumValue (Name)))
-        )
-      )
-    )
-  )
-  (Definition
-    (TypeDefinition
-      (EnumTypeDefinition
-        (TypeName) (EnumValuesDefinition
-          (EnumValueDefinition (EnumValue (Name))) (Comma)
-          (EnumValueDefinition (EnumValue (Name))) (Comma)
-        )
-      )
-    )
-  )
-))
-
-==========================
-Enum Definition - Error: TypeName
-==========================
-
-enum bad {
-  RED
-  GREEN
-  BLUE
-}
-
----
-
-(File (Document
-  (Definition
-    (TypeDefinition
-      (EnumTypeDefinition
-        (ERROR (Name) (TypeName) (Name))
-        (TypeName)
-      )
-    )
-  )
-) (ERROR))
-
-==========================
-Extern Dependency Definition
+Dependencies: Extern Dependency Definition
 ==========================
 
 extern WrapperDep {
@@ -97,7 +33,7 @@ extern AnotherDep from "uri/foo-bar-buz"
 ))
 
 ==========================
-Include Dependency Definition
+Dependencies: Include Dependency Definition
 ==========================
 
 include {

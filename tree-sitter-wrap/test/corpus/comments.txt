@@ -1,0 +1,77 @@
+==========================
+Comments: /* */ Comment Multi-Line
+==========================
+
+/* Test
+  Test
+Test */
+
+---
+
+(File (Document
+  (Definition
+    (CommentDefinition
+      (MultiLineCommentLiteral)
+    )
+  )
+))
+
+==========================
+Comments: // Comment Single-Line
+==========================
+
+// Test
+
+// // Test
+
+////// Test
+
+---
+
+(File (Document
+  (Definition
+    (CommentDefinition
+      (SingleLineCommentLiteral)
+    )
+  )
+  (Definition
+    (CommentDefinition
+      (SingleLineCommentLiteral)
+    )
+  )
+  (Definition
+    (CommentDefinition
+      (SingleLineCommentLiteral)
+    )
+  )
+))
+
+==========================
+Comments: # Comment Single-Line
+==========================
+
+# Test
+
+# # Test
+
+## Test
+
+---
+
+(File (Document
+  (Definition
+    (CommentDefinition
+      (SingleLineCommentLiteral)
+    )
+  )
+  (Definition
+    (CommentDefinition
+      (SingleLineCommentLiteral)
+    )
+  )
+  (Definition
+    (CommentDefinition
+      (SingleLineCommentLiteral)
+    )
+  )
+))

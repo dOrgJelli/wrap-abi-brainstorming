@@ -23,6 +23,10 @@
         {
           "type": "SYMBOL",
           "name": "DependencyDefinition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "CommentDefinition"
         }
       ]
     },
@@ -45,6 +49,19 @@
         {
           "type": "SYMBOL",
           "name": "IncludeTypeDefinition"
+        }
+      ]
+    },
+    "CommentDefinition": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "MultiLineCommentLiteral"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "SingleLineCommentLiteral"
         }
       ]
     },
@@ -268,24 +285,62 @@
       "name": "StringLiteral"
     },
     "StringLiteral": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SEQ",
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\"\\\\\\n]*"
+        },
+        {
+          "type": "STRING",
+          "value": "\""
+        }
+      ]
+    },
+    "MultiLineCommentLiteral": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "/*"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^*\\/]*"
+        },
+        {
+          "type": "STRING",
+          "value": "*/"
+        }
+      ]
+    },
+    "SingleLineCommentLiteral": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
           "members": [
             {
               "type": "STRING",
-              "value": "\""
-            },
-            {
-              "type": "PATTERN",
-              "value": "[^\"\\\\\\n]*"
+              "value": "//"
             },
             {
               "type": "STRING",
-              "value": "\""
+              "value": "#"
             }
           ]
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\n]*"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
         }
       ]
     },
@@ -293,32 +348,16 @@
       "type": "PATTERN",
       "value": "[_A-Za-z][_0-9A-Za-z]*"
     },
-    "Comment": {
-      "type": "TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "# "
-          },
-          {
-            "type": "PATTERN",
-            "value": ".*"
-          }
-        ]
-      }
-    },
     "Comma": {
       "type": "STRING",
       "value": ","
+    },
+    "SemiColon": {
+      "type": "STRING",
+      "value": ";"
     }
   },
   "extras": [
-    {
-      "type": "SYMBOL",
-      "name": "Comment"
-    },
     {
       "type": "PATTERN",
       "value": "[\\s\\uFEFF\\u2060\\u200B\\u00A0]"

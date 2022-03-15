@@ -2,7 +2,7 @@ module.exports = grammar({
   name: 'wrap',
 
   // extras: $ => [' ', "\t", "\n"],
-  extras: ($) => [$.Comment, /[\s\uFEFF\u2060\u200B\u00A0]/, $.Comma],
+  extras: ($) => [/[\s\uFEFF\u2060\u200B\u00A0]/, $.Comma],
 
   word: ($) => $.Name,
 
@@ -16,6 +16,7 @@ module.exports = grammar({
       choice(
         $.TypeDefinition,
         $.DependencyDefinition,
+        $.CommentDefinition,
       ),
     TypeDefinition: ($) =>
       choice(
@@ -26,6 +27,11 @@ module.exports = grammar({
         $.ExternTypeDefinition,
         $.IncludeTypeDefinition
       ),
+    CommentDefinition: ($) =>
+        choice(
+          $.MultiLineCommentLiteral,
+          $.SingleLineCommentLiteral,
+        ),
     TypeName: ($) => /[A-Z][_0-9A-Za-z]*/,
 
     // Type Definitions
@@ -84,14 +90,18 @@ module.exports = grammar({
     // Literals
 
     StringLiteral: ($) =>
-      choice(
-        seq('"', /[^"\\\n]*/, '"')
-      ),
+      seq('"', /[^"\\\n]*/, '"'),
+
+    MultiLineCommentLiteral: ($) =>
+      seq('/*', /[^*/]*/, '*/'),
+
+    SingleLineCommentLiteral: ($) =>
+      seq(choice('//', '#'), /[^\n]*/, '\n'),
 
     // Readability
 
     Name: ($) => /[_A-Za-z][_0-9A-Za-z]*/,
-    Comment: ($) => token(seq('# ', /.*/)),
     Comma: ($) => ',',
+    SemiColon: ($) => ';',
   },
 });

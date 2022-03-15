@@ -1,0 +1,19 @@
+enum Color {
+# ^ keyword
+#    ^ type
+  RED
+  # ^ enum
+  GREEN
+  # ^ enum
+  BLUE
+  # ^ enum
+}
+
+enum Test_foo {
+# ^ keyword
+#    ^ enum
+  RED,
+  # ^ enum
+  GREEN,
+  # ^ enum
+}

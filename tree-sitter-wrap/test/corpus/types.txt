@@ -1,0 +1,63 @@
+==========================
+Types: Enum Definition
+==========================
+
+enum Color {
+  RED
+  GREEN
+  BLUE
+}
+
+enum Test_foo {
+  RED,
+  GREEN,
+}
+
+---
+
+(File (Document
+  (Definition
+    (TypeDefinition
+      (EnumTypeDefinition
+        (TypeName) (EnumValuesDefinition
+          (EnumValueDefinition (EnumValue (Name)))
+          (EnumValueDefinition (EnumValue (Name)))
+          (EnumValueDefinition (EnumValue (Name)))
+        )
+      )
+    )
+  )
+  (Definition
+    (TypeDefinition
+      (EnumTypeDefinition
+        (TypeName) (EnumValuesDefinition
+          (EnumValueDefinition (EnumValue (Name))) (Comma)
+          (EnumValueDefinition (EnumValue (Name))) (Comma)
+        )
+      )
+    )
+  )
+))
+
+==========================
+Types: Enum Definition: Error - TypeName
+==========================
+
+enum bad {
+  RED
+  GREEN
+  BLUE
+}
+
+---
+
+(File (Document
+  (Definition
+    (TypeDefinition
+      (EnumTypeDefinition
+        (ERROR (Name) (TypeName) (Name))
+        (TypeName)
+      )
+    )
+  )
+) (ERROR))
