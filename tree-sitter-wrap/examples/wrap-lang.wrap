@@ -1,0 +1,30 @@
+/* External Dependencies */
+
+extern WrapperDep {
+  Module,
+  ObjectType
+} from "uri/string"
+
+extern AnotherDep from "uri/foo-bar-buz"
+
+/* Local Dependencies */
+
+include {
+  ObjectType,
+  AnotherType
+} from "./local/sub/path/file.wrap"
+
+include "./local/path/file.wrap"
+
+/* Enums */
+
+enum Color {
+  RED
+  GREEN
+  BLUE
+}
+
+enum Test_foo {
+  RED,
+  GREEN,
+}

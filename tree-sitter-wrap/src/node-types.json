@@ -1,0 +1,375 @@
+[
+  {
+    "type": "Definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "DependencyDefinition",
+          "named": true
+        },
+        {
+          "type": "TypeDefinition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "DependencyDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ExternTypeDefinition",
+          "named": true
+        },
+        {
+          "type": "IncludeTypeDefinition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "Document",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "Definition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "EnumTypeDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "EnumValuesDefinition",
+          "named": true
+        },
+        {
+          "type": "TypeName",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "EnumValue",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "Name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "EnumValueDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "EnumValue",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "EnumValuesDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "EnumValueDefinition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ExternNamespace",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "TypeName",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ExternTypeDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ExternNamespace",
+          "named": true
+        },
+        {
+          "type": "ExternUri",
+          "named": true
+        },
+        {
+          "type": "ExternValuesDefinition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ExternUri",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "StringLiteral",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ExternValue",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "TypeName",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ExternValueDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ExternValue",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ExternValuesDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ExternValueDefinition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "File",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "Document",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "IncludePath",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "StringLiteral",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "IncludeTypeDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "IncludePath",
+          "named": true
+        },
+        {
+          "type": "IncludeValuesDefinition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "IncludeValue",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "TypeName",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "IncludeValueDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "IncludeValue",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "IncludeValuesDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "IncludeValueDefinition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "StringLiteral",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "TypeDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "EnumTypeDefinition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "Comma",
+    "named": true
+  },
+  {
+    "type": "Comment",
+    "named": true
+  },
+  {
+    "type": "Name",
+    "named": true
+  },
+  {
+    "type": "TypeName",
+    "named": true
+  },
+  {
+    "type": "enum",
+    "named": false
+  },
+  {
+    "type": "extern",
+    "named": false
+  },
+  {
+    "type": "from",
+    "named": false
+  },
+  {
+    "type": "include",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
+  }
+]

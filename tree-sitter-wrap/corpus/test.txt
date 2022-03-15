@@ -1,0 +1,130 @@
+==========================
+Enum Definition
+==========================
+
+enum Color {
+  RED
+  GREEN
+  BLUE
+}
+
+enum Test_foo {
+  RED,
+  GREEN,
+}
+
+---
+
+(File (Document
+  (Definition
+    (TypeDefinition
+      (EnumTypeDefinition
+        (TypeName) (EnumValuesDefinition
+          (EnumValueDefinition (EnumValue (Name)))
+          (EnumValueDefinition (EnumValue (Name)))
+          (EnumValueDefinition (EnumValue (Name)))
+        )
+      )
+    )
+  )
+  (Definition
+    (TypeDefinition
+      (EnumTypeDefinition
+        (TypeName) (EnumValuesDefinition
+          (EnumValueDefinition (EnumValue (Name))) (Comma)
+          (EnumValueDefinition (EnumValue (Name))) (Comma)
+        )
+      )
+    )
+  )
+))
+
+==========================
+Enum Definition - Error: TypeName
+==========================
+
+enum bad {
+  RED
+  GREEN
+  BLUE
+}
+
+---
+
+(File (Document
+  (Definition
+    (TypeDefinition
+      (EnumTypeDefinition
+        (ERROR (Name) (TypeName) (Name))
+        (TypeName)
+      )
+    )
+  )
+) (ERROR))
+
+==========================
+Extern Dependency Definition
+==========================
+
+extern WrapperDep {
+  Module,
+  ObjectType
+} from "uri/string"
+
+extern AnotherDep from "uri/foo-bar-buz"
+
+---
+
+(File (Document
+  (Definition
+    (DependencyDefinition
+      (ExternTypeDefinition
+        (ExternNamespace (TypeName)) (ExternValuesDefinition
+          (ExternValueDefinition (ExternValue (TypeName))) (Comma)
+          (ExternValueDefinition (ExternValue (TypeName)))
+        ) (ExternUri (StringLiteral))
+      )
+    )
+  )
+  (Definition
+    (DependencyDefinition
+      (ExternTypeDefinition
+        (ExternNamespace (TypeName))
+        (ExternUri (StringLiteral))
+      )
+    )
+  )
+))
+
+==========================
+Include Dependency Definition
+==========================
+
+include {
+  ObjectType,
+  AnotherType
+} from "./local/sub/path/file.wrap"
+
+include "./local/path/file.wrap"
+
+---
+
+(File (Document
+  (Definition
+    (DependencyDefinition
+      (IncludeTypeDefinition
+        (IncludeValuesDefinition
+          (IncludeValueDefinition (IncludeValue (TypeName))) (Comma)
+          (IncludeValueDefinition (IncludeValue (TypeName)))
+        ) (IncludePath (StringLiteral))
+      )
+    )
+  )
+  (Definition
+    (DependencyDefinition
+      (IncludeTypeDefinition
+        (IncludePath (StringLiteral))
+      )
+    )
+  )
+))

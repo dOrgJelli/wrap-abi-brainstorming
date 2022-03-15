@@ -1,0 +1,337 @@
+{
+  "name": "wrap",
+  "word": "Name",
+  "rules": {
+    "File": {
+      "type": "SYMBOL",
+      "name": "Document"
+    },
+    "Document": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "Definition"
+      }
+    },
+    "Definition": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "TypeDefinition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "DependencyDefinition"
+        }
+      ]
+    },
+    "TypeDefinition": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "EnumTypeDefinition"
+        }
+      ]
+    },
+    "DependencyDefinition": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "ExternTypeDefinition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "IncludeTypeDefinition"
+        }
+      ]
+    },
+    "TypeName": {
+      "type": "PATTERN",
+      "value": "[A-Z][_0-9A-Za-z]*"
+    },
+    "EnumTypeDefinition": {
+      "type": "PREC_RIGHT",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "enum"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "TypeName"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "EnumValuesDefinition"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "EnumValuesDefinition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "EnumValueDefinition"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "EnumValueDefinition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "EnumValue"
+        }
+      ]
+    },
+    "EnumValue": {
+      "type": "SYMBOL",
+      "name": "Name"
+    },
+    "ExternTypeDefinition": {
+      "type": "PREC_RIGHT",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "extern"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "ExternNamespace"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "ExternValuesDefinition"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": "from"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "ExternUri"
+          }
+        ]
+      }
+    },
+    "ExternNamespace": {
+      "type": "SYMBOL",
+      "name": "TypeName"
+    },
+    "ExternValuesDefinition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "ExternValueDefinition"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "ExternValueDefinition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "ExternValue"
+        }
+      ]
+    },
+    "ExternValue": {
+      "type": "SYMBOL",
+      "name": "TypeName"
+    },
+    "ExternUri": {
+      "type": "SYMBOL",
+      "name": "StringLiteral"
+    },
+    "IncludeTypeDefinition": {
+      "type": "PREC_RIGHT",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "include"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "IncludeValuesDefinition"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "from"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "IncludePath"
+          }
+        ]
+      }
+    },
+    "IncludeValuesDefinition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "IncludeValueDefinition"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "IncludeValueDefinition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "IncludeValue"
+        }
+      ]
+    },
+    "IncludeValue": {
+      "type": "SYMBOL",
+      "name": "TypeName"
+    },
+    "IncludePath": {
+      "type": "SYMBOL",
+      "name": "StringLiteral"
+    },
+    "StringLiteral": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "\""
+            },
+            {
+              "type": "PATTERN",
+              "value": "[^\"\\\\\\n]*"
+            },
+            {
+              "type": "STRING",
+              "value": "\""
+            }
+          ]
+        }
+      ]
+    },
+    "Name": {
+      "type": "PATTERN",
+      "value": "[_A-Za-z][_0-9A-Za-z]*"
+    },
+    "Comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "# "
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          }
+        ]
+      }
+    },
+    "Comma": {
+      "type": "STRING",
+      "value": ","
+    }
+  },
+  "extras": [
+    {
+      "type": "SYMBOL",
+      "name": "Comment"
+    },
+    {
+      "type": "PATTERN",
+      "value": "[\\s\\uFEFF\\u2060\\u200B\\u00A0]"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "Comma"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+

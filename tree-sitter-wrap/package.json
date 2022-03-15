@@ -1,0 +1,16 @@
+{
+  "name": "tree-sitter-wrap",
+  "version": "1.0.0",
+  "description": "Treesitter Wrap Grammar",
+  "author": "Jordan Ellis <jelli@dorg.tech>",
+  "license": "MIT",
+  "main": "bindings/node",
+  "scripts": {
+    "build": "tree-sitter generate",
+    "test": "tree-sitter test"
+  },
+  "dependencies": {
+    "nan": "2.15.0",
+    "tree-sitter-cli": "0.20.6"
+  }
+}
