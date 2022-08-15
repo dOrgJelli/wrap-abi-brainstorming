@@ -1,0 +1,36 @@
+/*
+  [Improt Extern Abi]
+  Users wants to import an external ABI in the following ways:
+  - all types
+  - select types
+  - partial types
+*/
+
+# All Types
+
+use Ethereum from "ens://domain.eth"
+
+# Select Types
+
+use Ethereum: {
+  TypeName,
+  functionName
+} from "ens://domain.eth"
+
+# Partial Types
+
+use Ethereum<
+  # only need 1 function
+  type Module {
+    functionName(arg: String): PropType;
+  }
+
+  type TypeName {
+    /*
+      NOTE: PropType a dynamic type here,
+            and gets inferred at build-time
+            from "ens://domain.eth"
+    */
+    prop: PropType
+  }
+>
