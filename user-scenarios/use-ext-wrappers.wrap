@@ -8,18 +8,18 @@
 
 # All Types
 
-use Ethereum from "ens://domain.eth"
+import Ethereum from "ens://domain.eth"
 
 # Select Types
 
-use Ethereum: {
+import Ethereum: {
   TypeName,
   functionName
 } from "ens://domain.eth"
 
 # Partial Types
 
-use Ethereum<
+use Ethereum {
   # only need 1 function
   type Module {
     functionName(arg: String): PropType;
@@ -33,4 +33,4 @@ use Ethereum<
     */
     prop: PropType
   }
->
+} from "ens://domain.eth"
