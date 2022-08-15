@@ -8,18 +8,18 @@
 
 # All Types
 
-import Ethereum from "ens://domain.eth"
+import Dependency from "ens://domain.eth"
 
 # Select Types
 
-import Ethereum: {
+import Dependency: {
   TypeName,
   functionName
-} from "ens://domain.eth"
+} from "ipfs://QmHASH"
 
 # Partial Types
 
-use Ethereum {
+use Dependency {
   # only need 1 function
   type Module {
     functionName(arg: String): PropType;
@@ -33,4 +33,4 @@ use Ethereum {
     */
     prop: PropType
   }
-} from "ens://domain.eth"
+} from "file://directory/path"
